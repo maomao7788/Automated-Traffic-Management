@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cars Management</title>
+</head>
+<body>
+  <h1>Cars Management</h1>
+
+  <!-- Person Management -->
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h2>Person Management</h2>
+    
+    <h3>Create Person</h3>
+    <div>
+      <label>Name: </label>
+      <input type="text" id="person_name" />
+      <label>Birth Date: </label>
+      <input type="date" id="person_birth_date" />
+      <label>Address: </label>
+      <input type="text" id="person_address" />
+      <label>Email: </label>
+      <input type="text" id="person_email" />
+      <button onclick="createPerson()">Create</button>
+    </div>
+    <div id="create_person_result" style="color: green;"></div>
+
+    <hr/>
+
+    <h3>Update Person</h3>
+    <div>
+      <label>Person ID: </label>
+      <input type="number" id="person_id_update" />
+      <label>Name: </label>
+      <input type="text" id="person_name_update" />
+      <label>Birth Date: </label>
+      <input type="date" id="person_birth_date_update" />
+      <label>Address: </label>
+      <input type="text" id="person_address_update" />
+      <button onclick="updatePerson()">Update</button>
+    </div>
+    <div id="update_person_result" style="color: green;"></div>
+
+    <hr/>
+
+    <h3>Delete Person</h3>
+    <div>
+      <label>Person ID: </label>
+      <input type="number" id="person_id_delete" />
+      <button onclick="deletePerson()">Delete</button>
+    </div>
+    <div id="delete_person_result" style="color: red;"></div>
+
+    <hr/>
+
+    <h3>View Person Information</h3>
+    <div>
+      <label>Person ID: </label>
+      <input type="number" id="person_id_view" />
+      <button onclick="viewPersonInfo()">View Person</button>
+    </div>
+    <div id="view_person_result" style="color: blue;"></div>
+  </section>
+
+  <!-- Car Management -->
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h2>Car Management</h2>
+
+    <h3>Create Car</h3>
+    <div>
+      <label>Number: </label>
+      <input type="text" id="car_number" />
+      <label>Manufacturer: </label>
+      <input type="text" id="car_manufacturer" />
+      <label>Model: </label>
+      <input type="text" id="car_model" />
+      <label>Color: </label>
+      <input type="text" id="car_color" />
+      <label>Owner ID (optional): </label>
+      <input type="number" id="car_owner_id" />
+      <button onclick="createCar()">Create</button>
+    </div>
+    <div id="create_car_result" style="color: green;"></div>
+
+    <hr/>
+
+    <h3>Update Car</h3>
+    <div>
+      <label>Car ID: </label>
+      <input type="number" id="car_id_update" />
+      <label>Number: </label>
+      <input type="text" id="car_number_update" />
+      <label>Manufacturer: </label>
+      <input type="text" id="car_manufacturer_update" />
+      <label>Model: </label>
+      <input type="text" id="car_model_update" />
+      <label>Color: </label>
+      <input type="text" id="car_color_update" />
+      <label>Owner ID: </label>
+      <input type="number" id="car_owner_id_update" />
+      <button onclick="updateCar()">Update</button>
+    </div>
+    <div id="update_car_result" style="color: green;"></div>
+
+    <hr/>
+
+    <h3>Delete Car</h3>
+    <div>
+      <label>Car ID: </label>
+      <input type="number" id="car_id_delete" />
+      <button onclick="deleteCar()">Delete</button>
+    </div>
+    <div id="delete_car_result" style="color: red;"></div>
+  </section>
+  
+<!-- License Management -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>License Management</h2>
+
+  <h3>Create License</h3>
+  <div>
+    <label>License Number: </label>
+    <input type="text" id="license_number_create" />
+    <label>Issue Date: </label>
+    <input type="date" id="license_issue_date_create" />
+    <label>Expiry Date: </label>
+    <input type="date" id="license_expiry_date_create" />
+    <label>Person ID: </label>
+    <input type="number" id="license_person_id_create" />
+    <button onclick="createLicense()">Create License</button>
+  </div>
+  <div id="create_license_result" style="color: green;"></div>
+
+  <hr/>
+
+  <h3>Update License</h3>
+  <div>
+    <label>License Number: </label>
+    <input type="text" id="license_number_update" />
+    <label>Issue Date: </label>
+    <input type="date" id="license_issue_date_update" />
+    <label>Expiry Date: </label>
+    <input type="date" id="license_expiry_date_update" />
+    <label>Person ID: </label>
+    <input type="number" id="license_person_id_update" />
+    <button onclick="updateLicense()">Update License</button>
+  </div>
+  <div id="update_license_result" style="color: green;"></div>
+
+  <hr/>
+
+  <h3>Delete License</h3>
+  <div>
+    <label>License Number: </label>
+    <input type="text" id="license_number_delete" />
+    <button onclick="deleteLicense()">Delete License</button>
+  </div>
+  <div id="delete_license_result" style="color: red;"></div>
+</section>
+
+  <!-- Junction Cars: cars information -->
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h2>Junction Cars Information</h2>
+    <div>
+      <label>Junction ID: </label>
+      <input type="number" id="junction_id" />
+      <button onclick="viewCars()">View Junction Cars</button>
+    </div>
+    <div id="view_cars_result" style="color: blue;"></div>
+  </section>
+
+  <!-- Junction Management -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Junction Management</h2>
+
+  <h3>Create Junction</h3>
+  <div>
+    <label>Address: </label>
+    <input type="text" id="junction_address_create" />
+    <label>Max Traffic: </label>
+    <input type="number" id="junction_max_traffic_create" />
+    <button onclick="createJunction()">Create Junction</button>
+  </div>
+  <div id="create_junction_result" style="color: green;"></div>
+
+  <hr/>
+
+  <h3>Update Junction</h3>
+  <div>
+    <label>Junction ID: </label>
+    <input type="number" id="junction_id_update" />
+    <label>Address: </label>
+    <input type="text" id="junction_address_update" />
+    <label>Max Traffic: </label>
+    <input type="number" id="junction_max_traffic_update" />
+    <button onclick="updateJunction()">Update Junction</button>
+  </div>
+  <div id="update_junction_result" style="color: green;"></div>
+
+  <hr/>
+
+  <h3>Delete Junction</h3>
+  <div>
+    <label>Junction ID: </label>
+    <input type="number" id="junction_id_delete" />
+    <button onclick="deleteJunction()">Delete Junction</button>
+  </div>
+  <div id="delete_junction_result" style="color: red;"></div>
+</section>
+
+  <!-- Show All (Person, License, Car) -->
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h2>Show All Data</h2>
+    <div>
+      <button onclick="fetchAllPersons()">Show All Persons</button>
+      <button onclick="fetchAllLicenses()">Show All Licenses</button>
+      <button onclick="fetchAllCars()">Show All Cars</button>
+    </div>
+    <div style="margin-top: 10px;">
+      <strong>All Persons:</strong>
+      <pre id="all_persons_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+    </div>
+    <div style="margin-top: 10px;">
+      <strong>All Licenses:</strong>
+      <pre id="all_licenses_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+    </div>
+    <div style="margin-top: 10px;">
+      <strong>All Cars:</strong>
+      <pre id="all_cars_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+    </div>
+  </section>
+
+
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+    <h2>Fines Management</h2>
+  
+    <h3>Add Fine</h3>
+    <div>
+      <label>Car ID: </label>
+      <input type="number" id="car_id_create" />
+      <label>Camera ID: </label>
+      <input type="number" id="camera_id_create" />
+      <label>Violation ID: </label>
+      <input type="number" id="violation_id_create" />
+      <button onclick="addFine()">Add Fine</button>
+    </div>
+    <div id="add_fine_result" style="color: green;"></div>
+
+  <section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+      <h2>Logs Management</h2>
+    
+      <h3>Car enter junction</h3>
+      <div>
+        <label>Car ID: </label>
+        <input type="number" id="car_enter_id_create" />
+        <label>Junction ID: </label>
+        <input type="number" id="junction_enter_id_create" />
+        <button onclick="carEnter()">Car enter junction</button>
+      </div>
+      <div id="car_enter_result" style="color: green;"></div>
+
+      <h3>Car leave junction</h3>
+      <div>
+        <label>Car ID: </label>
+        <input type="number" id="car_leave_id_create" />
+        <label>Toward Junction ID: </label>
+        <input type="number" id="junction_left_towards_id_create" />
+        <button onclick="carLeave()">Car leave junction</button>
+      </div>
+      <div id="car_leave_result" style="color: green;"></div>
+
+      <h3>Get junction logs</h3>
+      <div>
+        <label>Junction ID: </label>
+        <input type="number" id="junction_logs_id_create" />
+        <button onclick="junctionLogs()">Get logs</button>
+      </div>
+      <div style="margin-top: 10px;">
+        <strong>All Logs:</strong>
+        <pre id="junction_logs_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+      </div>
+<!-- Traffic Flow Analysis -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Traffic Flow Analysis</h2>
+  <div>
+    <label>Junction ID: </label>
+    <input type="number" id="traffic_flow_junction_id" />
+    <button onclick="analyzeTrafficFlow()">Analyze Traffic Flow</button>
+  </div>
+  <div style="margin-top: 10px;">
+    <strong>Traffic Flow Result:</strong>
+    <pre id="traffic_flow_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+  </div>
+</section>
+<!-- Prediction Section -->
+<section style="border: 1px solid #ddd; border-radius: 8px; padding: 20px; margin-bottom: 20px; background-color: #f9f9f9;">
+  <h2 style="color: #333; font-family: Arial, sans-serif;">Congestion Prediction</h2>
+  <div>
+    <button onclick="predictAllCongestion()">Predict Congestion for All Junctions</button>
+  </div>
+  <div style="margin-top: 20px;">
+    <strong style="font-size: 16px; color: #333;">Congestion Prediction Result:</strong>
+    <pre id="congestion_prediction_result" 
+         style="color: #1e90ff; 
+                background-color: #fff; 
+                border: 1px solid #ddd; 
+                border-radius: 8px; 
+                padding: 15px; 
+                font-size: 14px; 
+                line-height: 1.5; 
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+                margin-top: 10px;">
+    </pre>
+  </div>
+</section>
+<!-- email announce -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Send Congestion Alert</h2>
+  <div>
+    <label>Junction ID: </label>
+    <input type="number" id="congestion_alert_junction_id" />
+    <button onclick="sendCongestionAlert()">Send Alert</button>
+  </div>
+  <div style="margin-top: 10px;">
+    <strong>Alert Result:</strong>
+    <pre id="congestion_alert_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+  </div>
+</section>
+
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Change Important Status</h2>
+  <div>
+    <label>Car ID: </label>
+    <input type="number" id="car_important_id" />
+    <button onclick="changeimportantStatus()">Change Status</button>
+  </div>
+  <div style="margin-top: 10px;">
+    <strong>Result:</strong>
+    <pre id="car_important_result" style="color: blue; border: 1px solid #ccc; padding: 5px;"></pre>
+  </div>
+</section>
+<!-- Change Important Status -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Emergency Alerts</h2>
+  
+<!-- Real-time Notifications -->
+  <div id="emergency_alerts" style="height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+    <h3 style="color: #dc3545;">Active Alerts</h3>
+    <div id="alert_messages"></div>
+  </div>
+<!-- Emergency Signal Control Section -->
+<section style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
+  <h2>Emergency Signal Control</h2>
+  <button onclick="activateEmergency()">Activate Emergency Mode</button>
+  <button onclick="restoreNormal()">Restore Normal Mode</button>
+  <div id="emergency_status" style="margin-top: 10px; color: blue;"></div>
+</section>
+
+<script>
+function activateEmergency() {
+  fetch(`/cars/activate_emergency_signals/`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('emergency_status').innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      document.getElementById('emergency_status').innerText = `Error: ${err.message}`;
+    });
+}
+
+function restoreNormal() {
+  fetch(`/cars/restore_normal_signals/`)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('emergency_status').innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(err => {
+      document.getElementById('emergency_status').innerText = `Error: ${err.message}`;
+    });
+}
+function appendAlert(message, isError = false) {
+  const alertDiv = document.getElementById('alert_messages');
+  const alertElement = document.createElement('div');
+  alertElement.style.color = isError ? '#dc3545' : '#28a745';
+  alertElement.style.padding = '5px';
+  alertElement.style.margin = '5px 0';
+  alertElement.style.borderLeft = `3px solid ${isError ? '#dc3545' : '#28a745'}`;
+  alertElement.innerHTML = `<strong>${new Date().toLocaleTimeString()}:</strong> ${message}`;
+  alertDiv.appendChild(alertElement);
+  emergency_alerts.scrollTop = emergency_alerts.scrollHeight;
+}
+
+function changeimportantStatus() {
+  const car_id = document.getElementById('car_important_id').value;
+  fetch(`/cars/change_important_status/${car_id}/`)
+    .then(res => res.json())
+    .then(data => {
+      const message = data.error ? `Error: ${data.error}` : data.message;
+      appendAlert(message, !!data.error);
+      document.getElementById('car_important_result').innerText = 
+        JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      appendAlert(`Network Error: ${error.message}`, true);
+    });
+}
+
+function sendCongestionAlert() {
+  const junctionId = document.getElementById('congestion_alert_junction_id').value;
+  const url = `/cars/send-congestion-alert/${junctionId}/`;
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      document.getElementById('congestion_alert_result').innerText = JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      document.getElementById('congestion_alert_result').innerText = `Error: ${error.message}`;
+    });
+  }
+  function predictAllCongestion() {
+  const url = `/cars/congestion-prediction/`; 
+  fetch(url)
+    .then(res => res.json())
+    .then(data => {
+      const result = JSON.stringify(data, null, 2);
+      document.getElementById('congestion_prediction_result').innerText = result;
+    })
+    .catch(error => {
+      document.getElementById('congestion_prediction_result').innerText = `Error: ${error.message}`;
+    });
+}
+function analyzeTrafficFlow() {
+  const junctionId = document.getElementById('traffic_flow_junction_id').value;
+  const url = `/cars/traffic-flow-analysis/${junctionId}/`;
+
+  fetch(url)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.text(); 
+    })
+    .then(html => {
+      const popup = window.open("", "Traffic Flow Chart", "width=600,height=400");
+      popup.document.write(html); 
+      popup.document.close();  
+    })
+    .catch(error => {
+      document.getElementById('traffic_flow_result').innerText = `Error: ${error.message}`;
+    });
+}
+  function createLicense() {
+    const number = document.getElementById('license_number_create').value.trim();
+    const issue_date = document.getElementById('license_issue_date_create').value;
+    const expiry_date = document.getElementById('license_expiry_date_create').value;
+    const person_id = document.getElementById('license_person_id_create').value;
+    const url = `/cars/create_license/?number=${encodeURIComponent(number)}&issue_date=${encodeURIComponent(issue_date)}&expiry_date=${encodeURIComponent(expiry_date)}&person_id=${person_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('create_license_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function updateLicense() {
+    const number = document.getElementById('license_number_update').value.trim();
+    const issue_date = document.getElementById('license_issue_date_update').value;
+    const expiry_date = document.getElementById('license_expiry_date_update').value;
+    const person_id = document.getElementById('license_person_id_update').value;
+    const url = `/cars/update_license/?number=${encodeURIComponent(number)}&issue_date=${encodeURIComponent(issue_date)}&expiry_date=${encodeURIComponent(expiry_date)}&person_id=${person_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('update_license_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function deleteLicense() {
+    const number = document.getElementById('license_number_delete').value.trim();
+    const url = `/cars/delete_license/?number=${encodeURIComponent(number)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('delete_license_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function createPerson() {
+    const name = document.getElementById('person_name').value.trim();
+    const birth_date = document.getElementById('person_birth_date').value;
+    const address = document.getElementById('person_address').value.trim();
+    const email = document.getElementById('person_email').value.trim();
+    const url = `/cars/create_person/?name=${encodeURIComponent(name)}&birth_date=${encodeURIComponent(birth_date)}&address=${encodeURIComponent(address)}&email=${encodeURIComponent(email)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('create_person_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function updatePerson() {
+    const person_id = document.getElementById('person_id_update').value;
+    const name = document.getElementById('person_name_update').value.trim();
+    const birth_date = document.getElementById('person_birth_date_update').value;
+    const address = document.getElementById('person_address_update').value.trim();
+    const url = `/cars/update_person/?person_id=${person_id}&name=${encodeURIComponent(name)}&birth_date=${encodeURIComponent(birth_date)}&address=${encodeURIComponent(address)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('update_person_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function deletePerson() {
+    const person_id = document.getElementById('person_id_delete').value;
+    const url = `/cars/delete_person/?person_id=${person_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('delete_person_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function viewPersonInfo() {
+    const person_id = document.getElementById('person_id_view').value;
+    const url = `/cars/person/?id=${person_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('view_person_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function createCar() {
+    const number = document.getElementById('car_number').value.trim();
+    const manufacturer = document.getElementById('car_manufacturer').value.trim();
+    const model = document.getElementById('car_model').value.trim();
+    const color = document.getElementById('car_color').value.trim();
+    const ownerId = document.getElementById('car_owner_id').value;
+    const url = `/cars/create_car/?number=${encodeURIComponent(number)}&manufacturer=${encodeURIComponent(manufacturer)}&model=${encodeURIComponent(model)}&color=${encodeURIComponent(color)}&owner_id=${ownerId}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('create_car_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function updateCar() {
+    const car_id = document.getElementById('car_id_update').value;
+    const number = document.getElementById('car_number_update').value.trim();
+    const manufacturer = document.getElementById('car_manufacturer_update').value.trim();
+    const model = document.getElementById('car_model_update').value.trim();
+    const color = document.getElementById('car_color_update').value.trim();
+    const ownerId = document.getElementById('car_owner_id_update').value;
+    const url = `/cars/update_car/?car_id=${car_id}&number=${encodeURIComponent(number)}&manufacturer=${encodeURIComponent(manufacturer)}&model=${encodeURIComponent(model)}&color=${encodeURIComponent(color)}&owner_id=${ownerId}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('update_car_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function deleteCar() {
+    const car_id = document.getElementById('car_id_delete').value;
+    const url = `/cars/delete_car/?car_id=${car_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('delete_car_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function viewCars() {
+    const junction_id = document.getElementById('junction_id').value;
+    const url = `/cars/car/?id=${junction_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('view_cars_result').innerText = JSON.stringify(data);
+      });
+  }
+
+
+  function fetchAllPersons() {
+    fetch('/cars/persons/')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('all_persons_result').innerText = JSON.stringify(data, null, 2);
+      });
+  }
+
+
+  function fetchAllLicenses() {
+    fetch('/cars/licenses/')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('all_licenses_result').innerText = JSON.stringify(data, null, 2);
+      });
+  }
+
+  function fetchAllCars() {
+    fetch('/cars/show_cars')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('all_cars_result').innerText = JSON.stringify(data, null, 2);
+      });
+  }
+
+  function addFine() {
+    const car_id = document.getElementById('car_id_create').value;
+    const camera_id = document.getElementById('camera_id_create').value;
+    const violation_id = document.getElementById('violation_id_create').value;
+    const url = `/cars/make_fine/?c_id=${encodeURIComponent(car_id)}&id=${encodeURIComponent(camera_id)}&v_id=${encodeURIComponent(violation_id)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('add_fine_result').innerText = JSON.stringify(data);
+      });
+  }
+  function carEnter() {
+  const car_id = document.getElementById('car_enter_id_create').value;
+  const junction_id = document.getElementById('junction_enter_id_create').value;
+  fetch(`/cars/car_enter/?c_id=${car_id}&j_id=${junction_id}`)
+    .then(res => res.json())
+    .then(data => {
+      if(data.messages) {
+        data.messages.forEach(msg => appendAlert(msg));
+      }
+      document.getElementById('car_enter_result').innerText = 
+        JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      appendAlert(`Entry Error: ${error.message}`, true);
+    });
+}
+
+function carLeave() {
+  const car_id = document.getElementById('car_leave_id_create').value;
+  const junction_id = document.getElementById('junction_left_towards_id_create').value;
+  fetch(`/cars/car_leave/?c_id=${car_id}&j_id=${junction_id}`)
+    .then(res => res.json())
+    .then(data => {
+      if(data.messages) {
+        data.messages.forEach(msg => appendAlert(msg));
+      }
+      document.getElementById('car_leave_result').innerText = 
+        JSON.stringify(data, null, 2);
+    })
+    .catch(error => {
+      appendAlert(`Exit Error: ${error.message}`, true);
+    });
+}
+  function junctionLogs() {
+    const junction_id = document.getElementById('junction_logs_id_create').value;
+    const url = `/cars/junction_logs/?j_id=${encodeURIComponent(junction_id)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('junction_logs_result').innerText = JSON.stringify(data, null, 2); 
+    })
+  }
+
+  function createJunction() {
+    const address = document.getElementById('junction_address_create').value.trim();
+    const max_traffic = document.getElementById('junction_max_traffic_create').value;
+    const url = `/cars/create_junktion/?address=${encodeURIComponent(address)}&max_traffic=${encodeURIComponent(max_traffic)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('create_junction_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function updateJunction() {
+    const junction_id = document.getElementById('junction_id_update').value;
+    const address = document.getElementById('junction_address_update').value.trim();
+    const max_traffic = document.getElementById('junction_max_traffic_update').value;
+    const url = `/cars/update_junktion/?junktion_id=${junction_id}&address=${encodeURIComponent(address)}&max_traffic=${encodeURIComponent(max_traffic)}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('update_junction_result').innerText = JSON.stringify(data);
+      });
+  }
+
+  function deleteJunction() {
+    const junction_id = document.getElementById('junction_id_delete').value;
+    const url = `/cars/delete_junktion/?junktion_id=${junction_id}`;
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('delete_junction_result').innerText = JSON.stringify(data);
+      });
+  }
+</script>
+</body>
+</html>

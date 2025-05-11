@@ -1,0 +1,9 @@
+<h2>userinfo</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">save</button>
+</form>
+<a href="{% url 'license' %}">manage license</a> |
+<a href="{% url 'car_list' %}">manage vehicle</a> |
+<a href="{% url 'logout' %}">log out</a>

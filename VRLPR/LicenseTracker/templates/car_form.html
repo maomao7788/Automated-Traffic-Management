@@ -1,0 +1,7 @@
+<h2>add vehicle</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">add</button>
+</form>
+<a href="{% url 'car_list' %}">back to list</a>

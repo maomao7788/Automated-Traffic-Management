@@ -1,0 +1,12 @@
+<h2>vehicle list</h2>
+<ul>
+  {% for car in cars %}
+    <li>
+      {{ car.number }} - {{ car.manufacturer }} {{ car.model }} ({{ car.color }})
+      <a href="{% url 'car_edit' car.id %}">edit</a> |
+      <a href="{% url 'car_delete' car.id %}">delete</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="{% url 'car_add' %}">add new vehicle</a> |
+<a href="{% url 'profile' %}">back to profile</a>

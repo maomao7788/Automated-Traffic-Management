@@ -1,0 +1,13 @@
+<h2>delete vehicle info</h2>
+<p>are you sure delete the following car?</p>
+<ul>
+  <li>License Plate: {{ car.number }}</li>
+  <li>Manufacturer: {{ car.manufacturer }}</li>
+  <li>Model: {{ car.model }}</li>
+  <li>Color: {{ car.color }}</li>
+</ul>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">confirm Delete</button>
+</form>
+<a href="{% url 'car_list' %}">cancel</a>

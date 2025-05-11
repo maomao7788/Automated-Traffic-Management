@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Flow Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .traffic-status {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .traffic-status.high {
+            background-color: #ffcccc;
+            color: #cc0000;
+        }
+        .traffic-status.moderate {
+            background-color: #fff3cc;
+            color: #cc9900;
+        }
+        .traffic-status.low {
+            background-color: #ccffcc;
+            color: #006600;
+        }
+        .chart-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .info {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .close-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .close-button button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .close-button button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Traffic Flow Analysis</h1>
+
+    <!-- Traffic Status Display -->
+    <div class="traffic-status {{ traffic_status|lower|cut:' ' }}">
+        Current Traffic Status: {{ traffic_status }}
+    </div>
+
+    <!-- Traffic Flow Chart -->
+    <div class="chart-container">
+        <img src="data:image/png;base64,{{ data }}" alt="Traffic Flow Chart">
+    </div>
+
+    <!-- Congestion Threshold Info -->
+    <div class="info">
+        <strong>Congestion Threshold:</strong> 
+        {{ congestion_threshold|default:"Not set" }} vehicles per hour
+    </div>
+
+    <!-- Close Button -->
+    <div class="close-button">
+        <button onclick="window.close()">Close Window</button>
+    </div>
+</body>
+</html>
