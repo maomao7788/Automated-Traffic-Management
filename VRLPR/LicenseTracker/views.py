@@ -254,12 +254,12 @@ def send_congestion_alert(request, junction_id):
                 f"Please drive carefully or consider alternative routes.\n"
                 f"You can drive to other nodes that are not congested: {', '.join(clear_nodes)}\n"
             )
-            # send_mail(
-            #     subject='Upstream Junction Congestion Alert',
-            #     message=alert_message,
-            #     from_email=settings.DEFAULT_FROM_EMAIL,
-            #     recipient_list=['maomaorc@foxmail.com']
-            # )
+            send_mail(
+                subject='Upstream Junction Congestion Alert',
+                message=alert_message,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=['youremail@example.com]
+            )
             return JsonResponse({
                 'status': 'warning',
                 'message': (
