@@ -73,7 +73,7 @@ VRLPR/
 * * Python manage.py makemigrations LicenseTracker
   * Python manage.py migrate LicenseTracker
   * python manage.py runserver
-* Access the application at `http://127.0.0.1:8000/`
+* Access the application at `http://127.0.0.1:8000/cars/login/`
   
 ## Below you can find our UMLs
 
